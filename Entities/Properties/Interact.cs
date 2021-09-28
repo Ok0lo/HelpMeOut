@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(OfferEffect))]
 public class Interact : MonoBehaviour {
 
-    public event EventHandler<OnInteractedEventArgs> OnCanInteract; // How make this :/
-    public event EventHandler<OnInteractedEventArgs> OnInteracted;
+    public event EventHandler<InteractEventArgs> OnCanInteract; // How make this :/
+    public event EventHandler<InteractEventArgs> OnInteracted;
 
     // Need Player for Multiplayer
     public class InteractEventArgs : EventArgs {
