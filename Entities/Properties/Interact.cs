@@ -10,7 +10,7 @@ public class Interact : MonoBehaviour {
     public event EventHandler<OnInteractedEventArgs> OnInteracted;
 
     // Need Player for Multiplayer
-    public class OnInteractedEventArgs : EventArgs {
+    public class InteractEventArgs : EventArgs {
         public AbstractPlayerEntity player;
     }
     
@@ -32,7 +32,7 @@ public class Interact : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.E) && IsClosestInteractToPlayer()) {
             OnInteracted?.Invoke(this, 
-            new OnInteractedEventArgs { player = _activePlayer}
+            new InteractEventArgs { player = _activePlayer}
             );
         }
     }
