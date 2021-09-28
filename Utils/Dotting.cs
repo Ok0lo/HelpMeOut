@@ -4,7 +4,7 @@ using UnityEngine;
 // is this a clear name?
 public static class Dotting {
 
-    // its good?
+    // Is it good?
     public static bool IsClosestPositionTo(List<Vector3> candidatePositionList, Vector3 verifiablePosition, Vector3 targetPosition) {
         float closestDistance = float.MaxValue;
         foreach(Vector3 candidate in candidatePositionList) {
