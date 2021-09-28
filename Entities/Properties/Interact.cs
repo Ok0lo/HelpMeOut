@@ -24,6 +24,8 @@ public class Interact : MonoBehaviour {
 
     private void Awake() {
         _offerEffect = GetComponent<OfferEffect>(); // Check: OfferEffect class
+        _offerEffect.Initialization(offerEffectType);
+        
         _observeSphere = ColliderCreator.CreateSphereColliderOnGameObject(gameObject, observeRadius, true);
     }
 
