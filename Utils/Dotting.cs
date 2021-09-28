@@ -17,4 +17,5 @@ public static class Dotting {
 
         return false;
     }
+    
 }
