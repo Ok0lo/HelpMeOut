@@ -3,15 +3,15 @@ using UnityEngine;
 public class GameAssets : MonoBehaviour {
 
     private static GameAssets instance;
-    
-    public static GameAssets Singleton { 
+
+    public static GameAssets Singleton {
         get {
-            if(instance == null) instance = Resources.Load<GameAssets>("GameAssets");
+            if (instance == null) instance = Resources.Load<GameAssets>("GameAssets");
             return instance;
         }
     }
 
-    // For -> OfferEffect
-    public Transform pfInteractOffer, pfDialogueOffer, pfFightOffer;
+    // is readonly appropriate here? 
+    public readonly Transform pfInteractOffer, pfDialogueOffer, pfFightOffer;
 
 }
