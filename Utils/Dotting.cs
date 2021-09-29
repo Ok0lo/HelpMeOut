@@ -1,21 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// is this a clear name?
+/// <summary>
+/// Dot placement 
+/// </summary>
 public static class Dotting {
 
-    // Is it good?
     public static bool IsClosestPositionTo(List<Vector3> candidatePositionList, Vector3 verifiablePosition, Vector3 targetPosition) {
-        float closestDistance = float.MaxValue;
-        foreach(Vector3 candidate in candidatePositionList) {
-            float distance = Vector3.Distance(targetPosition, candidate);
-            if (distance < closestDistance) closestDistance = distance;
+        float closestDistance = Vector3.Distance(verifiablePosition, targetPosition);
+
+        foreach (Vector3 candidate in candidatePositionList) {
+            float candidateDistance = Vector3.Distance(targetPosition, candidate);
+            if (candidateDistance < closestDistance) return false;
         }
 
-        if (closestDistance > Vector3.Distance(targetPosition, verifiablePosition))
-            return true;
-
-        return false;
+        return true;
     }
-    
+
 }
