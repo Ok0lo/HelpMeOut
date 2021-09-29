@@ -1,8 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Sign above the body 
+/// </summary>
 public class OfferEffect : MonoBehaviour {
         
-    // How to do better? 
     public enum Type {
         interact,
         dialogue,
@@ -13,9 +15,21 @@ public class OfferEffect : MonoBehaviour {
     
     private Transform _offerEffectTransform;
 
-    public void Initialization(Type offerType) {
-        Transform offerTransform; 
-        switch (offerType) { // Help me out
+    public void Initialization(Type offerType, float specialOffsetUp = 1) {
+        Vector3 offsetUpVector = transform.up * offsetUp * specialOffsetUp;
+        _offerEffectTransform = Instantiate(GetTransformByOfferType(offerType), transform.position + offsetUpVector, transform.rotation, transform);
+        
+        HideOffer();
+    }
+    
+    public void ShowOffer() => _offerEffectTransform.gameObject.SetActive(true);
+    public void HideOffer() => _offerEffectTransform.gameObject.SetActive(false);
+
+    // Help me out
+    private Transform GetTransformByOfferType(Type offerType) {
+        Transform offerTransform;
+        
+        switch (offerType) { 
             default:
                 offerTransform = GameAssets.Singleton.pfInteractOffer;
                 break;
@@ -27,12 +41,8 @@ public class OfferEffect : MonoBehaviour {
                 offerTransform = GameAssets.Singleton.pfFightOffer;
                 break;
         }
-        
-        _offerEffectTransform = Instantiate(offerTransform, transform.position + transform.up * offsetUp, transform.rotation, transform);
-        HideOffer();
+
+        return offerTransform;
     }
-    
-    public void ShowOffer() => _offerEffectTransform.gameObject.SetActive(true);
-    public void HideOffer() => _offerEffectTransform.gameObject.SetActive(false);
 
 }
